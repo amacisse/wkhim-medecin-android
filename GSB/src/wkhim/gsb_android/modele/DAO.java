@@ -24,8 +24,8 @@ public class DAO {
 
     public static List<String> getLesDeps() {
         List<String> lesDeps = new ArrayList<String>();
-        String url = "http://gaemedecins.appspot.com/Controleur/medParDep/listeDep";
         try {
+            String url = "http://gaemedecins.appspot.com/Controleur/medParDep/listeDep";
             URL myURL;
             myURL = new URL(url);
             Document doc;
@@ -51,8 +51,8 @@ public class DAO {
         return lesDeps;
     }
 
-    public static List<String> getLesMedsParDep(String Dep) {
-        List<String> lesMeds = new ArrayList<String>();
+    public static List<Medecin> getLesMedsParDep(String Dep) {
+        List<Medecin> lesMeds = new ArrayList<Medecin>();
         String url = "http://gaemedecins.appspot.com/Controleur/medParDep/listeMed/" + Dep;
         try {
             URL myURL;
@@ -67,12 +67,29 @@ public class DAO {
             for (int i = 0; i < listeMed.getLength(); i++) {
                 Node medecin = listeMed.item(i);
                 NodeList lesProprietes = medecin.getChildNodes();
+                String nom = null;
+                String prenom = null;
+                String adresse = null;
+                String specialite = null;
+                String tel = null;
                 for (int j = 0; j < lesProprietes.getLength(); j++) {
                     if (lesProprietes.item(j).getNodeName().equals("nom")) {
-                        lesMeds.add(lesProprietes.item(j).getTextContent().trim());
-                        break;
+                        nom = lesProprietes.item(j).getTextContent().trim();
+                    }
+                    if (lesProprietes.item(j).getNodeName().equals("prenom")) {
+                        prenom = lesProprietes.item(j).getTextContent().trim();
+                    }
+                    if (lesProprietes.item(j).getNodeName().equals("adresse")) {
+                        adresse = lesProprietes.item(j).getTextContent().trim();
+                    }
+                    if (lesProprietes.item(j).getNodeName().equals("specialite")) {
+                        specialite = lesProprietes.item(j).getTextContent().trim();
+                    }
+                    if (lesProprietes.item(j).getNodeName().equals("tel")) {
+                        tel = lesProprietes.item(j).getTextContent().trim();
                     }
                 }
+                lesMeds.add(new Medecin(nom, prenom, adresse, specialite, tel));
             }
         } catch (Exception ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
