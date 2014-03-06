@@ -4,10 +4,16 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
 >
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logogsb"
+    />
     <TextView  
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content" 
-        android:text="Galaxy Swiss Bourdin"
+        android:text="Sélectionnez un département"
     />
     <ListView android:id="@android:id/list"
               android:layout_width="fill_parent"

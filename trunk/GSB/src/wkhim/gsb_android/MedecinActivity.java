@@ -30,20 +30,13 @@ public class MedecinActivity extends ListActivity {
         Intent inter = getIntent();
         String dep = inter.getStringExtra("leDep");
         final List<Medecin> lesMeds = DAO.getLesMedsParDep(dep);
-        MedAdapter adapter = new MedAdapter(lesMeds, this);
+        final MedAdapter adapter = new MedAdapter(lesMeds, this);
         setListAdapter(adapter);
         Button button = (Button) findViewById(R.id.button);
-        final List<Medecin> filtreMeds = new ArrayList<Medecin>();
         button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
+            public void onClick(View view) {
                 EditText editText = (EditText) findViewById(R.id.search_input);
-                for (Medecin m : lesMeds) {
-                    if (m.getNom().startsWith(editText.getText().toString())) {
-                        filtreMeds.add(m);
-                    }
-                }
-                MedAdapter adapter = new MedAdapter(filtreMeds, this);
-                setListAdapter(adapter);
+                adapter.getFilter().filter(editText.getText());
             }
         });
     }
