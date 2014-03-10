@@ -29,15 +29,16 @@ public class MedAdapter extends BaseAdapter implements Filterable {
 
     MedAdapter(List data, Context c) {
         lesMeds = data;
+        FilteredData = data;
         this.c = c;
     }
 
     public int getCount() {
-        return lesMeds.size();
+        return FilteredData.size();
     }
 
     public Object getItem(int i) {
-        return lesMeds.get(i);
+        return FilteredData.get(i);
     }
 
     public long getItemId(int i) {
@@ -52,12 +53,12 @@ public class MedAdapter extends BaseAdapter implements Filterable {
         TextView adresse = (TextView) v.findViewById(R.id.adresse);
         TextView specialite = (TextView) v.findViewById(R.id.specialite);
         TextView tel = (TextView) v.findViewById(R.id.tel);
-        Medecin leChev = lesMeds.get(i);
-        nom.setText(leChev.getNom());
-        prenom.setText(leChev.getPrenom());
-        adresse.setText(leChev.getAdresse());
-        specialite.setText(leChev.getSpecialite());
-        tel.setText(leChev.getTel());
+        Medecin unMed = FilteredData.get(i);
+        nom.setText(unMed.getNom());
+        prenom.setText(unMed.getPrenom());
+        adresse.setText(unMed.getAdresse());
+        specialite.setText(unMed.getSpecialite());
+        tel.setText(unMed.getTel());
         return v;
     }
 
