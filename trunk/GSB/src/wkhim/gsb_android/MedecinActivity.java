@@ -9,11 +9,9 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-import java.util.ArrayList;
+import android.widget.ListView;
 import java.util.List;
 import wkhim.gsb_android.modele.DAO;
 import wkhim.gsb_android.modele.Medecin;
@@ -39,5 +37,16 @@ public class MedecinActivity extends ListActivity {
                 adapter.getFilter().filter(editText.getText());
             }
         });
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        Intent inter = new Intent(this, AfficherActivity.class);
+        inter.putExtra("leNom", ((Medecin) l.getItemAtPosition(position)).getNom());
+        inter.putExtra("lePrenom", ((Medecin) l.getItemAtPosition(position)).getPrenom());
+        inter.putExtra("laSpe", ((Medecin) l.getItemAtPosition(position)).getSpecialite());
+        inter.putExtra("lAdresse", ((Medecin) l.getItemAtPosition(position)).getAdresse());
+        inter.putExtra("leTel", ((Medecin) l.getItemAtPosition(position)).getTel());
+        startActivity(inter);
     }
 }
