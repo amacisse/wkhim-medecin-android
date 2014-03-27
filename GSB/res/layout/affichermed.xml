@@ -36,15 +36,19 @@
     />
     <Button
         android:id="@+id/call_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Appeller"
+        android:layout_width="fill_parent"
+        android:layout_height="30px"
+        android:textColor="#FFFFFF"
+        android:background="#5cb85c"
+        android:text="Appeler"
     />
     <Button
         android:id="@+id/msg_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Envoery un message"
+        android:layout_width="fill_parent"
+        android:layout_height="30px"
+        android:textColor="#FFFFFF"
+        android:background="#f0ad4e"
+        android:text="Envoyer un message"
     />
 </LinearLayout>
 
