@@ -51,7 +51,7 @@ public class MedAdapter extends BaseAdapter implements Filterable {
         TextView nom = (TextView) v.findViewById(R.id.nom);
         TextView prenom = (TextView) v.findViewById(R.id.prenom);
         TextView adresse = (TextView) v.findViewById(R.id.adresse);
-        TextView specialite = (TextView) v.findViewById(R.id.specialite);
+        TextView specialite = (TextView) v.findViewById(R.id.spe);
         TextView tel = (TextView) v.findViewById(R.id.tel);
         Medecin unMed = FilteredData.get(i);
         nom.setText(unMed.getNom());
